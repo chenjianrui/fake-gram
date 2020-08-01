@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 
 import Title from './components/Title'
+import UploadForm from './components/UploadForm'
 
 const Container = styled.div`
   max-width: 960px;
@@ -12,6 +13,7 @@ function App() {
   return (
     <Container>
       <Title />
+      <UploadForm />
     </Container>
   );
 }

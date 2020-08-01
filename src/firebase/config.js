@@ -9,12 +9,12 @@ var firebaseConfig = {
   projectId: "fake-gram",
   storageBucket: "fake-gram.appspot.com",
   messagingSenderId: "893611184453",
-  appId: precess.env.REACT_APP_APP_ID,
+  appId: process.env.REACT_APP_APP_ID,
   measurementId: "G-D1S2JHRH1X"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+// firebase.analytics();
 
 const projectStorage = firebase.storage();
 const projectFirestore = firebase.firestore();
