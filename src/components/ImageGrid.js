@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 
 import useFirestore from '../hooks/useFirestore'
 
@@ -10,7 +11,7 @@ const ImageContainer = styled.div`
   grid-gap: 40px;
 `
 
-const ImageWrap = styled.div`
+const ImageWrap = styled(motion.div)`
   overflow: hidden;
   height: 0;
   padding: 50% 0;
@@ -27,14 +28,24 @@ const ImageWrap = styled.div`
   }
 `
 
-const ImageGrid = () => {
+const ImageGrid = ({ setSelectedImg }) => {
   const { docs } = useFirestore('images')
-  console.log(docs)
   return (
     <ImageContainer>
       { docs && docs.map(doc => (
-        <ImageWrap key={doc.id}>
-          <img src={doc.url} alt='pic'/>
+        <ImageWrap 
+          key={doc.id} 
+          onClick={() => setSelectedImg(doc.url)} 
+          whileHover={{ opacity: 1 }}
+          layout
+        >
+          <motion.img 
+            src={doc.url} 
+            alt='pic'
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+          />
         </ImageWrap>
       )) }
     </ImageContainer>

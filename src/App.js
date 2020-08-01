@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components'
 
 import Title from './components/Title'
 import UploadForm from './components/UploadForm'
 import ImageGrid from './components/ImageGrid'
+import Modal from './components/Modal'
 
 const Container = styled.div`
   max-width: 960px;
@@ -11,11 +12,13 @@ const Container = styled.div`
 `
 
 function App() {
+  const [ selectedImg, setSelectedImg ] = useState(null)
   return (
     <Container>
       <Title />
       <UploadForm />
-      <ImageGrid />
+      <ImageGrid setSelectedImg={setSelectedImg}/>
+      {selectedImg && <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg}/>}
     </Container>
   );
 }
