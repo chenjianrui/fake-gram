@@ -16,6 +16,7 @@ const TitleContainer = styled.div`
     font-size: 2.6rem;
   }
 `
+
 const Title = () => {
 
   return (
